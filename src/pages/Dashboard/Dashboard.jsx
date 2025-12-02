@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProviders";
 import UsersTab from "./AllUsers";
-import PropertiesTab from "./PropertiesTab";
+import PropertiesTab from "./Propertiestab";
 
 const AdminDashboard = () => {
   const { logOut } = useContext(AuthContext);
