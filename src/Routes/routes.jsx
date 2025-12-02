@@ -90,14 +90,6 @@ export const router = createBrowserRouter([
       </AdminRoute>
     ),
     children: [
-      {
-        path: "cart",
-        element: (
-          <AdminRoute>
-            <Cart></Cart>
-          </AdminRoute>
-        ),
-      },
       //admin routes
       {
         path: "users",
