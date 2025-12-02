@@ -35,7 +35,7 @@ const SignUp = () => {
           };
           axiosPublic.post("/users", userInfo).then((res) => {
             if (res.data.insertedId) {
-              console.log('user added to the database')
+              console.log("user added to the database");
               reset();
               Swal.fire({
                 position: "top-end",
@@ -120,7 +120,7 @@ const SignUp = () => {
                 <input
                   className="btn btn-neutral mt-4"
                   type="submit"
-                  value="Sing Up"
+                  value="Sign Up"
                 />
               </fieldset>
             </form>
