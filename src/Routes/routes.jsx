@@ -11,7 +11,6 @@ import Login from "../pages/Login/Login";
 import SignUp from "../pages/SignUp/SignUp";
 import AdminSignUp from "../pages/SignUp/AdminSignUp";
 import CardDetails from "../pages/Menu/CardDetails/CardDetails";
-import Cart from "../pages/Dashboard/Propertiestab";
 import AllUsers from "../pages/Dashboard/AllUsers";
 import AdminRoute from "./AdminRoute";
 import AdminLogin from "../pages/Login/AdminLogin";
@@ -19,7 +18,6 @@ import AdminDashboard from "../pages/Dashboard/Dashboard";
 import PropertiesTab from "../pages/Dashboard/Propertiestab";
 import UserDashboard from "../pages/UserDashboard/UserDashboard";
 import UsersTab from "../pages/Dashboard/AllUsers";
-import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
   {
