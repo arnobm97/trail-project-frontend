@@ -7,16 +7,8 @@ import { useEffect, useState } from "react";
 import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
 
-// Helper function to get base URL
-const getBaseUrl = () => {
-  if (
-    window.location.hostname === "localhost" ||
-    window.location.hostname === "127.0.0.1"
-  ) {
-    return "http://localhost:5000";
-  }
-  return "https://trial-project-backend.vercel.app";
-};
+// Use only the Vercel backend URL
+const baseURL = "https://trial-project-backend.vercel.app";
 
 const Review = () => {
   const [reviews, setReviews] = useState([]);
@@ -24,10 +16,9 @@ const Review = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const baseUrl = getBaseUrl();
-    console.log("Fetching reviews from:", `${baseUrl}/reviews`);
+    console.log("Fetching reviews from:", `${baseURL}/reviews`);
 
-    fetch(`${baseUrl}/reviews`)
+    fetch(`${baseURL}/reviews`)
       .then((res) => {
         if (!res.ok) {
           throw new Error(`HTTP error! status: ${res.status}`);
@@ -42,22 +33,6 @@ const Review = () => {
         console.error("Error fetching reviews:", error);
         setError(error.message);
         setLoading(false);
-
-        // Fallback to localhost
-        if (baseUrl.includes("vercel.app")) {
-          fetch("http://localhost:5000/reviews")
-            .then((res) => {
-              if (res.ok) return res.json();
-              throw new Error("Localhost also failed");
-            })
-            .then((data) => {
-              setReviews(data);
-              setLoading(false);
-            })
-            .catch(() => {
-              // Both failed
-            });
-        }
       });
   }, []);
 
@@ -81,7 +56,7 @@ const Review = () => {
         <SectionTitle subHeading={"What our client say"} heading={"Review"} />
         <div className="text-center text-red-500 p-8">
           <p>Error loading reviews: {error}</p>
-          <p className="text-sm mt-2">Trying to fetch from: {getBaseUrl()}</p>
+          <p className="text-sm mt-2">Backend URL: {baseURL}</p>
         </div>
       </section>
     );

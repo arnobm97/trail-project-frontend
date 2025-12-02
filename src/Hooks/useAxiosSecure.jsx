@@ -2,26 +2,18 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import useAuth from "./useAuth";
 
-// Determine API base URL
-const getBaseUrl = () => {
-  if (
-    window.location.hostname === "localhost" ||
-    window.location.hostname === "127.0.0.1"
-  ) {
-    return "http://localhost:5000";
-  }
-  return "https://trial-project-backend.vercel.app";
-};
+// Use only the Vercel backend URL
+const baseURL = "https://trial-project-backend.vercel.app";
 
 const axiosSecure = axios.create({
-  baseURL: getBaseUrl(),
+  baseURL: baseURL,
 });
 
 const useAxiosSecure = () => {
   const navigate = useNavigate();
   const { logOut } = useAuth();
 
-  console.log("Axios base URL:", getBaseUrl());
+  console.log("Axios base URL:", baseURL);
 
   // Request interceptor to add authorization header
   axiosSecure.interceptors.request.use(
